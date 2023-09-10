@@ -20,6 +20,7 @@ const root = require('./src/server/routes/root');
 
 //Use routes
 app.use(express.static(public));
+app.use('/', root);
 app.get('*', (req, res) => {
     res.status(404).send("Your page is pining for the fjords.");
 });
