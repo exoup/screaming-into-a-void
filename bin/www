@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+//Start app. Connect database. Etc.
+require('dotenv').config();
+const app = require('../app');
+
+app.listen(PORT, () => {
+    console.log(`App listening on ${PORT}`);
+});
