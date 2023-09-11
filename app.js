@@ -16,10 +16,12 @@ app.set('views', path.join(__dirname, './src/client/views'));
 
 //Routes
 const root = require('./src/server/routes/root');
+const events = require('./src/server/routes/events');
 
 //Use routes
 app.use(express.static(public));
 app.use('/', root);
+app.use('/events', events);
 app.get('*', (req, res) => {
     res.status(404).send("Your page is pining for the fjords.");
 });
