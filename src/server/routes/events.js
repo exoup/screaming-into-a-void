@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-router.get('/get', (req, res, next) => {
+router.get('/', (req, res, next) => {
     try {
         res.setHeader('Content-Type', 'text/event-stream');
         res.setHeader('Cache-Control', 'no-cache');
