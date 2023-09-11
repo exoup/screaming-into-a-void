@@ -2,6 +2,24 @@
 //Start app. Connect database. Etc.
 require('dotenv').config();
 const app = require('../app');
+//Redis
+const { createClient } = require('redis');
+const client = createClient({
+    url: process.env.REDIS_URL,
+    socket: {
+        tls: false,
+        servername: process.env.REDIS_HOST
+    }
+});
+client.connect();
+client.on('error', err => console.log('Redis Client Error', err));
+client.on('connect', function () {
+    console.log('Connected!');
+});
+Promise.resolve(client.get('hello'))
+    .then((e) => {
+        console.log(e)
+    });
 
 //Vars
 app.set('port', process.env.PORT || 3000);
