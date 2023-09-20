@@ -4,9 +4,12 @@ await esbuild.build({
   entryPoints: [
     { out: 'app', in: './src/client/index.js' },
     { out: 'styles', in: './src/client/public/styles.css' },
+    { out: 'index', in: './src/client/public/index.html' }
   ],
   loader: {
     '.js': 'jsx',
+    '.css': 'css',
+    '.html': 'copy'
   },
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
