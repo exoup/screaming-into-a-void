@@ -4,6 +4,7 @@
   "description": "Come scream with me!",
   "scripts": {
     "build": "node esbuild.config.mjs",
+    "build:watch": "node eswatch.config.mjs",
     "watch": "nodemon ./bin/www",
     "start": "node ./bin/www"
   },
