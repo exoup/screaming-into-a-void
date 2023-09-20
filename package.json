@@ -1,10 +1,9 @@
 {
   "name": "screaming-into-a-void",
   "version": "0.0.1",
-  "description": "",
-  "main": "app.js",
+  "description": "Come scream with me!",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node esbuild.config.mjs",
     "watch": "nodemon ./bin/www",
     "start": "node ./bin/www"
   },
@@ -20,14 +19,17 @@
   "homepage": "https://github.com/exoup/screaming-into-a-void#readme",
   "dependencies": {
     "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "redis": "^4.6.8"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "esbuild": "^0.19.3",
+    "nodemon": "^3.0.1",
+    "preact": "^10.17.1",
+    "react": "npm:@preact/compat@^17.1.2",
+    "react-dom": "npm:@preact/compat@^17.1.2"
   },
   "engines": {
-    "node": "18"
+    "node": "^18"
   }
 }
