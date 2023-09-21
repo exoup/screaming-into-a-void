@@ -1,4 +1,20 @@
-import esbuild from 'esbuild'
+import esbuild from 'esbuild';
+import chalk from 'chalk';
+
+let watchPlugin = {
+    name: 'watchBuild',
+    setup(build) {
+        let startTime;
+        build.onStart(() => {
+            startTime = new Date();
+            console.log(chalk.greenBright('Build started.'));
+        })
+
+        build.onEnd((res) => {
+            console.log(`${chalk.greenBright('Build ended')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
+        })
+    },
+}
 
 await esbuild.build({
   entryPoints: [
@@ -17,6 +33,7 @@ await esbuild.build({
   treeShaking: true,
   minify: true,
   write: true,
+  plugins: [watchPlugin],
   // metafile: true,
   outdir: 'dist/',
 })

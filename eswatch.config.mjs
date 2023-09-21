@@ -1,13 +1,29 @@
-import esbuild from 'esbuild'
+import esbuild from 'esbuild';
+import chalk from 'chalk';
 
 /**
 * Exit
 * @param {NodeJS.SignalsListener} signal
 */
 function signalHandler(signal) {
-    console.debug(`\n${signal} : Signal received : done watching.`);
+    console.debug(`\n${chalk.redBright(signal)} : Signal received : done watching.`);
     context.dispose();
     process.exit(0)
+}
+
+let watchPlugin = {
+    name: 'watchBuild',
+    setup(build) {
+        let startTime;
+        build.onStart(() => {
+            startTime = new Date();
+            console.log(chalk.greenBright('Build started.'));
+        })
+
+        build.onEnd((res) => {
+            console.log(`${chalk.greenBright('Build ended')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
+        })
+    },
 }
 
 
@@ -25,10 +41,8 @@ let context = await esbuild.context({
     jsxFactory: 'h',
     jsxFragment: 'Fragment',
     bundle: true,
-    treeShaking: true,
-    minify: true,
     write: true,
-    // metafile: true,
+    plugins: [watchPlugin],
     outdir: 'dist/',
 })
     .catch((e) => {
@@ -41,8 +55,7 @@ await context.watch()
         console.error(e);
         process.exit(1);
     });
+
 console.log('Watching...');
 
 process.on('SIGINT', signalHandler);
-process.on('SIGTERM', signalHandler);
-process.on('SIGKILL', signalHandler);
