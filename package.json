@@ -6,7 +6,8 @@
     "build": "node esbuild.config.mjs",
     "build:watch": "node eswatch.config.mjs",
     "watch": "nodemon ./bin/www",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev:watch": "concurrently \"npm:build:watch\" \"npm:watch\""
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,6 @@
   },
   "homepage": "https://github.com/exoup/screaming-into-a-void#readme",
   "dependencies": {
-    "chalk": "^5.3.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "preact": "^10.17.1",
@@ -29,6 +29,8 @@
     "redis": "^4.6.8"
   },
   "devDependencies": {
+    "chalk": "^5.3.0",
+    "concurrently": "^8.2.1",
     "esbuild": "^0.19.3",
     "nodemon": "^3.0.1"
   },
