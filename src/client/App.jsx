@@ -1,12 +1,15 @@
+import Router from 'preact-router';
 import { h } from 'preact';
+import VoidHome from './components/VoidHome';
+import VoidAbout from './components/VoidAbout';
 //Other component imports..
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello, Preact App!</h1>
-      <p>This is a sample Preact component.</p>
-    </div>
+    <Router>
+      <VoidHome path="/" />
+      <VoidAbout path="/about" />
+    </Router>
   )
 }
 
