@@ -1,4 +1,20 @@
+@import "normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
 /* Global style */
 * {
-    color: red;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+html {
+    height: 100vh;
+    margin: 0;
+    background: url('./stars2.png') repeat top center, linear-gradient(180deg, rgba(77,72,85,1) 0%, rgba(52,49,58,1) 20%, rgba(37,35,42,1) 40%, rgba(24,23,27,1) 60%, rgba(11,11,13,1) 80%, rgba(0,0,0,0) 100%); 
+    background-color: rgb(00,00,00);
+}
+
+body {
+    text-align: center;
+    background-attachment: scroll;
 }

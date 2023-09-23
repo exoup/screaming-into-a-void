@@ -2,7 +2,7 @@
 
 //Dependencies
 const express = require('express');
-const path = require("path");
+const path = require('path');
 const public = path.join(__dirname, './dist');
 
 //Using
@@ -13,13 +13,15 @@ app.use(express.urlencoded({ extended: false }));
 
 
 //Routes
+// const root = require('./src/server/routes/root');
 const events = require('./src/server/routes/events');
 
 //Use routes
 app.use(express.static(public));
+// app.use('/', root(public));
 app.use('/events', events);
 app.get('*', (req, res) => {
-    res.status(404).send("Your page is pining for the fjords.");
+    res.status(404).send('Your page is pining for the fjords.');
 });
 app.use((err, req, res, next) => {
     console.error(err);

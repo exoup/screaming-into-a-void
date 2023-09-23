@@ -21,7 +21,7 @@ let watchPlugin = {
         })
 
         build.onEnd((res) => {
-            console.log(`${chalk.greenBright('Build ended')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
+            console.log(`${chalk.greenBright('Build complete')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
         })
     },
 }
@@ -36,12 +36,17 @@ let context = await esbuild.context({
     loader: {
         '.js': 'jsx',
         '.css': 'css',
-        '.html': 'copy'
+        '.html': 'copy',
+        '.png': 'copy',
     },
     jsxFactory: 'h',
     jsxFragment: 'Fragment',
     bundle: true,
     write: true,
+    alias: {
+        "react": "preact-compat",
+        "react-dom": "preact-compat"
+    },
     plugins: [watchPlugin],
     outdir: 'dist/',
 })

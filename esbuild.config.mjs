@@ -11,7 +11,7 @@ let watchPlugin = {
         })
 
         build.onEnd((res) => {
-            console.log(`${chalk.greenBright('Build ended')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
+            console.log(`${chalk.greenBright('Build complete')} with ${chalk.redBright(res.errors.length)} errors in ${chalk.yellowBright((new Date() - startTime))} milliseconds.`);
         })
     },
 }

@@ -1,11 +1,26 @@
 const router = require("express").Router();
 
-router.get('/', (req, res, next) => {
-    try {
-    }
-    catch (e) {
-        next(e);
-    };
-});
+module.exports = (public) => {
 
-module.exports = router;
+    router.get('/', (req, res, next) => {
+        try {
+        }
+        catch (e) {
+            next(e);
+        };
+    });
+
+    router.get('/about', (req, res, next) => {
+        try {
+            res.sendFile(`${public}/index.html`);
+        }
+        catch (e) {
+            next(e);
+        };
+    });
+
+    return router;
+
+}
+
+// module.exports = router;
