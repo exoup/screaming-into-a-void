@@ -25,7 +25,8 @@ await esbuild.build({
   loader: {
     '.js': 'jsx',
     '.css': 'css',
-    '.html': 'copy'
+    '.html': 'copy',
+    '.png': 'copy'
   },
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
